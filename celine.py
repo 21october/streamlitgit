@@ -8,7 +8,7 @@ import os
 import zipfile
 # python3 -m streamlit run /Users/youkyung/21October/streamlitgit/sandro2.py
 
-st.title('Sandro')
+st.title('CELINE')
 st.header('공식 홈페이지 이미지 다운로드')
 
 uploaded_file = st.file_uploader(label="Url 리스트(엑셀)를 업로드 하세요.", type='xlsx')
@@ -24,15 +24,13 @@ if uploaded_file is not None:
             response = requests.get(url)
             html = response.text
             soup = BeautifulSoup(html, 'html.parser')
-            name = soup.select_one("#title").text
-            images = soup.select("img",attrs={"class":"productthumbnail lazyload loaded"})
+            name = soup.select_one('span.o-product__title-truncate.f-body--em').text
+            images = soup.find_all('button','m-thumb-carousel__img')
             list = []
             for img in images:
-                if "data-hires" in img.attrs:
-                    imgUrl = img["data-hires"]
-                    list.append(imgUrl)
-                else:
-                    pass
+                imgUrl = img.find('img')['data-src-zoom']
+                list.append(imgUrl)
+
             path = os.getcwd()
             
             n = 1
