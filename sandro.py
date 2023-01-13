@@ -1,14 +1,12 @@
 import streamlit as st
 import pandas as pd
-from urllib.request import urlopen
 import requests
-from bs4 import BeautifulSoup
+from urllib.request import urlopen
 import urllib.request
+from bs4 import BeautifulSoup
 import os
 
-
-st.title('Download images')
-st.header("공식 홈페이지 이미지 다운로드: 산드로")
+st.title('공식 홈페이지 이미지 다운로드: 산드로')
 
 uploaded_file = st.file_uploader(label="Url 리스트(엑셀)를 업로드 하세요.", type='xlsx')
 if uploaded_file is not None:
