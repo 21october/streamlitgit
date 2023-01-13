@@ -41,4 +41,4 @@ if uploaded_file is not None:
                         h.write(img)
                 n += 1
             indx += 1
-    st.success("작업이 완료되었습니다.")
+    st.success(f"작업이 완료되었습니다. 저장경로:{path}")
