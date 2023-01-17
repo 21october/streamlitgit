@@ -1,5 +1,4 @@
 from io import BytesIO
-from tkinter.font import BOLD
 import streamlit as st
 import pandas as pd
 import requests
