@@ -13,6 +13,13 @@ from PIL import Image
 st.title('LOUIS VUITTON')
 st.header('공식 홈페이지 이미지 다운로드')
 
+st.write("1/ URL로 다운로드 받기")
+st.text_input(label="여기에 제품 링크를 입력하세요")
+
+
+
+st.write("2/ 엑셀 대량 다운로드")
+
 uploaded_file = st.file_uploader(label="Url 리스트(엑셀)를 업로드 하세요.", type='xlsx')
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
@@ -29,6 +36,7 @@ if uploaded_file is not None:
             soup = BeautifulSoup(html, 'html.parser')
             name = soup.select_one('h1.lv-product__name').text.strip()
             images = soup.select('li > button > div > picture > img')
+            images2 = soup.select('section.lv-product__sections > section.lv-product-immersion.lv-product__section > div > div > div > picture > img')
             list = []
             for image in images:
                 if image.get('srcset') is not None:
@@ -41,6 +49,19 @@ if uploaded_file is not None:
                     imgUrls = strings.split(',')
                     img456 = imgUrls[2].strip()
                     list.append(img456)
+            
+            #하단 이미지            
+            for image2 in images2:
+                if image2.get('srcset') is not None:
+                    strings2 = image2.get('srcset')
+                    imgUrls2 = strings2.split(',')
+                    img456_2 = imgUrls2[2].strip()
+                    list.append(img456_2)
+                else:
+                    strings2 = image2.get('data-srcset')
+                    imgUrls2 = strings2.split(',')
+                    img456_2 = imgUrls2[2].strip()
+                    list.append(img456_2)
 
             path = os.getcwd()
             
