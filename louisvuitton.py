@@ -1,4 +1,5 @@
 from io import BytesIO
+from tkinter.font import BOLD
 import streamlit as st
 import pandas as pd
 import requests
@@ -14,8 +15,10 @@ st.title('LOUIS VUITTON')
 st.header('공식 홈페이지 이미지 다운로드')
 
 st.write("1/ URL로 다운로드 받기")
-input = st.text_input(label="여기에 제품 링크를 입력하고 ENTER 를 누르세요.")
-if input is not None:
+input = st.text_input(label="👇 여기에 제품 링크를 입력하고 ENTER 를 클릭하세요.")
+btn_clicked = st.button("ENTER",key='confirm_btn',disabled=(input is None))
+
+if btn_clicked:
     start_down = st.button(label="다운로드 시작하기")
     if start_down is not None:
         indx = 1
