@@ -26,15 +26,15 @@ if btn_clicked:
         soup = BeautifulSoup(html, 'html.parser')
         name = soup.select_one('span.o-product__title-truncate.f-body--em').text
         images = soup.find_all('button','m-thumb-carousel__img')
-        list = []
+        list1 = []
         for img in images:
             imgUrl = img.find('img')['data-src-zoom']
-            list.append(imgUrl)
+            list1.append(imgUrl)
 
         path = os.getcwd()
         
         n = 1
-        for i in list:
+        for i in list1:
             with urlopen(i) as f:
                 with open(path+"/"+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
                     img = f.read()

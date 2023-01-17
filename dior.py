@@ -27,18 +27,18 @@ if btn_clicked:
         name = soup.select_one('span.multiline-text.Titles_title__PAVsd').text
         reference = soup.select_one('p.Titles_ref__7LPN1').text.split(':')[1].strip()
         images = soup.select('img')
-        list = []
+        list1 = []
         for img in images:
             if reference in img['src']:
                 try:
-                    list.append(img['src'])
+                    list1.append(img['src'])
                 except:
                     pass
 
         path = os.getcwd()
         
         n = 1
-        for i in list:
+        for i in list1:
             with urlopen(i) as f:
                 with open(path+"/"+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
                     img = f.read()

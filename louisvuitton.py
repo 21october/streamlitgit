@@ -30,18 +30,18 @@ if btn_clicked:
         name = soup.select_one('h1.lv-product__name').text.strip()
         images = soup.select('li > button > div > picture > img')
         images2 = soup.select('section.lv-product__sections > section.lv-product-immersion.lv-product__section > div > div > div > picture > img')
-        list = []
+        list1 = []
         for image in images:
             if image.get('srcset') is not None:
                 strings = image.get('srcset')
                 imgUrls = strings.split(',')
                 img456 = imgUrls[2].strip()
-                list.append(img456)
+                list1.append(img456)
             else:
                 strings = image.get('data-srcset')
                 imgUrls = strings.split(',')
                 img456 = imgUrls[2].strip()
-                list.append(img456)
+                list1.append(img456)
         
         #하단 이미지            
         for image2 in images2:
@@ -49,17 +49,17 @@ if btn_clicked:
                 strings2 = image2.get('srcset')
                 imgUrls2 = strings2.split(',')
                 img456_2 = imgUrls2[2].strip()
-                list.append(img456_2)
+                list1.append(img456_2)
             else:
                 strings2 = image2.get('data-srcset')
                 imgUrls2 = strings2.split(',')
                 img456_2 = imgUrls2[2].strip()
-                list.append(img456_2)
+                list1.append(img456_2)
 
         path = os.getcwd()
         
         n = 1
-        for i in list:
+        for i in list1:
             res = requests.get(i,headers=headers)
             image = Image.open(BytesIO(res.content))
             image.save(path+'/'+str(indx)+'_'+name+str(n)+'.png','PNG')
