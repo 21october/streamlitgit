@@ -75,12 +75,13 @@ if btn_clicked:
     with open('img.zip', 'rb') as f:
         st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
     
-    st.success(f"작업이 완료되었습니다. 압축파일을 다운로드 받으세요.")
+    st.success("작업이 완료되었습니다. 압축파일을 다운로드 받으세요.")
 
 ##########################
-
+st.write("")
+st.write("")
+st.write("")
 st.write("2/ 엑셀 대량 다운로드")
-
 uploaded_file = st.file_uploader(label="Url 리스트(엑셀)를 업로드 하세요.", type='xlsx')
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
