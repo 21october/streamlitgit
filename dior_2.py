@@ -110,6 +110,9 @@ if uploaded_file is not None:
         st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
 
     if st.download_button:
-        shutil.rmtree(path)
-    
+        if os.path.exists(path):
+            for file in os.scandir(path):
+                os.remove(file.path)
+        else:
+            pass    
     st.success(f"작업이 완료되었습니다. 압축파일을 다운로드 받으세요.")
