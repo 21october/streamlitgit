@@ -65,6 +65,7 @@ if uploaded_file is not None:
                 image = Image.open(BytesIO(res.content))
                 image.save(path+'/'+str(indx)+'_'+name+str(n)+'.png','PNG')
                 n += 1
+            st.write(f"{indx}번 완료")
             indx += 1
 
     #파일 압축하기
