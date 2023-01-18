@@ -106,7 +106,7 @@ if uploaded_file is not None:
             if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png'):
                 my_zip.write(file)
         for file in os.listdir(f_path):
-            os.remove(f_path+'/'+file)
+            os.remove(file)
 
     with open('img.zip', 'rb') as f:
         down = st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
