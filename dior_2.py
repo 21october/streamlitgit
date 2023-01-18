@@ -89,7 +89,7 @@ if uploaded_file is not None:
                         pass
 
             path = os.getcwd()
-            print(path)
+            st.write(path)
             n = 1
             for i in list:
                 with urlopen(i) as f:
