@@ -6,12 +6,16 @@ import urllib.request
 from bs4 import BeautifulSoup
 import os
 import zipfile
-# python3 -m streamlit run /Users/youkyung/21October/streamlitgit/dior.py
+import shutil
+# python3 -m streamlit run /Users/youkyung/21October/streamlitgit/dior_2.py
 
 st.title('DIOR')
 st.header('공식 홈페이지 이미지 다운로드')
 
-st.write("엑셀 대량 다운로드")
+st.write("")
+st.write("")
+st.write("")
+st.write("2/ 엑셀 대량 다운로드")
 uploaded_file = st.file_uploader(label="Url 리스트(엑셀)를 업로드 하세요.", type='xlsx')
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
@@ -36,24 +40,25 @@ if uploaded_file is not None:
                     except:
                         pass
 
-            path = os.getcwd()
+            f_path = os.getcwd()
             
             n = 1
             for i in list:
                 with urlopen(i) as f:
-                    with open(path+"/"+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
+                    with open(f_path+"/"+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
                         img = f.read()
                         h.write(img)
                 n += 1
+            st.write(f"{indx}번 완료")
             indx += 1
-
+    
     #파일 압축하기
     with zipfile.ZipFile("img.zip",'w') as my_zip:
-        for file in os.listdir(path):
+        for file in os.listdir(f_path):
             if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png'):
                 my_zip.write(file)
 
     with open('img.zip', 'rb') as f:
-        st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
-    
+        down = st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
+
     st.success(f"작업이 완료되었습니다. 압축파일을 다운로드 받으세요.")
