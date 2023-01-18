@@ -90,7 +90,7 @@ if uploaded_file is not None:
                         pass
 
             f_path = os.getcwd()
-            st.write(f_path)
+            st.write(f"{indx}번 완료")
             n = 1
             for i in list:
                 with urlopen(i) as f:
@@ -99,7 +99,7 @@ if uploaded_file is not None:
                         h.write(img)
                 n += 1
             indx += 1
-
+    list.clear()
     #파일 압축하기
     with zipfile.ZipFile("img.zip",'w') as my_zip:
         for file in os.listdir(f_path):
@@ -112,5 +112,6 @@ if uploaded_file is not None:
     if down:
         import shutil
         shutil.rmtree(f_path)
-        
+
+
     st.success(f"작업이 완료되었습니다. 압축파일을 다운로드 받으세요.")
