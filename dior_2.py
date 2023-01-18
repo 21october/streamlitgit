@@ -66,10 +66,10 @@ st.write("")
 st.write("")
 st.write("2/ 엑셀 대량 다운로드")
 uploaded_file = st.file_uploader(label="Url 리스트(엑셀)를 업로드 하세요.", type='xlsx')
-if uploaded_file is not None:
-    df = pd.read_excel(uploaded_file)
-    st.dataframe(df)
-    urls = df['링크']
+# if uploaded_file is not None:
+df = pd.read_excel(uploaded_file)
+st.dataframe(df)
+urls = df['링크']
 
 start_down = st.button(label="다운로드 시작하기")
 if start_down is not None:
