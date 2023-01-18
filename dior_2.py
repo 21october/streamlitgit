@@ -89,12 +89,12 @@ if uploaded_file is not None:
                     except:
                         pass
 
-            path = os.getcwd()
-            st.write(path)
+            f_path = os.getcwd()
+            st.write(f_path)
             n = 1
             for i in list:
                 with urlopen(i) as f:
-                    with open(path+"/"+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
+                    with open(f_path+"/"+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
                         img = f.read()
                         h.write(img)
                 n += 1
@@ -102,17 +102,15 @@ if uploaded_file is not None:
 
     #파일 압축하기
     with zipfile.ZipFile("img.zip",'w') as my_zip:
-        for file in os.listdir(path):
+        for file in os.listdir(f_path):
             if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png'):
                 my_zip.write(file)
 
     with open('img.zip', 'rb') as f:
-        st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
+        down = st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
 
-    if st.download_button:
-        if os.path.exists(path):
-            for file in os.scandir(path):
-                os.remove(file.path)
-        else:
-            pass    
+    if down:
+        import shutil
+        shutil.rmtree(f_path)
+        
     st.success(f"작업이 완료되었습니다. 압축파일을 다운로드 받으세요.")
