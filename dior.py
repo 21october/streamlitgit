@@ -15,7 +15,7 @@ st.header('공식 홈페이지 이미지 다운로드')
 st.write("")
 st.write("")
 st.write("")
-st.write("2/ 엑셀 대량 다운로드")
+st.write("엑셀 대량 다운로드")
 uploaded_file = st.file_uploader(label="Url 리스트(엑셀)를 업로드 하세요.", type='xlsx')
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
