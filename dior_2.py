@@ -6,6 +6,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import os
 import zipfile
+import shutil
 # python3 -m streamlit run /Users/youkyung/21October/streamlitgit/dior_2.py
 
 st.title('DIOR')
@@ -107,5 +108,8 @@ if uploaded_file is not None:
 
     with open('img.zip', 'rb') as f:
         st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
+
+    if st.download_button:
+        shutil.rmtree(path)
     
     st.success(f"작업이 완료되었습니다. 압축파일을 다운로드 받으세요.")
