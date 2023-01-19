@@ -47,7 +47,7 @@ if uploaded_file is not None:
             n = 1
             for i in list:
                 with urlopen(i) as f:
-                    with open(path+'\\'+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
+                    with open(os.path.join("tempDir", str(indx)+"_"+name+str(n)+'.jpg'),'wb') as h:
                         img = f.read()
                         h.write(img)
                 n += 1
