@@ -11,10 +11,10 @@ import zipfile
 st.title('CELINE')
 st.header('공식 홈페이지 이미지 다운로드')
 
-try:
-    os.mkdir("C:\\Users\\CELINE")
-except:
-    pass
+# try:
+#     os.mkdir("C:\\CELINE")
+# except:
+#     pass
 
 st.write("")
 st.write("")
@@ -41,25 +41,25 @@ if uploaded_file is not None:
                 list.append(imgUrl)
         
             
-            path = "C:\\Users\\CELINE\\"
+            path = os.getcwd()
             
             n = 1
             for i in list:
                 with urlopen(i) as f:
-                    with open(path+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
+                    with open(path+'\\'+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
                         img = f.read()
                         h.write(img)
                 n += 1
             st.write(f"{indx}번 완료")
             indx += 1
 
-    # #파일 압축하기
-    # with zipfile.ZipFile("img.zip",'w') as my_zip:
-    #     for file in os.listdir(path):
-    #         if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png'):
-    #             my_zip.write(file)
+    #파일 압축하기
+    with zipfile.ZipFile("img.zip",'w') as my_zip:
+        for file in os.listdir(path):
+            if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png'):
+                my_zip.write(file)
 
-    # with open('img.zip', 'rb') as f:
-    #     st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
+    with open('img.zip', 'rb') as f:
+        st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
     
     st.success(f"작업이 완료되었습니다. 이미지가 {path}에 저장되었습니다.")
