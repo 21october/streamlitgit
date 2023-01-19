@@ -9,10 +9,17 @@ import os
 import zipfile
 from PIL import Image
 # python3 -m streamlit run /Users/youkyung/21October/streamlitgit/louisvuitton.py
+try:
+    os.mkdir("LV")
+except:
+    pass
 
 st.title('LOUIS VUITTON')
 st.header('공식 홈페이지 이미지 다운로드')
 
+st.write("")
+st.write("")
+st.write("")
 st.write("엑셀 대량 다운로드")
 uploaded_file = st.file_uploader(label="Url 리스트(엑셀)를 업로드 하세요.", type='xlsx')
 if uploaded_file is not None:
@@ -57,7 +64,7 @@ if uploaded_file is not None:
                     img456_2 = imgUrls2[2].strip()
                     list.append(img456_2)
 
-            path = os.getcwd()
+            path = os.getcwd() + '/LV'
             
             n = 1
             for i in list:
@@ -68,13 +75,13 @@ if uploaded_file is not None:
             st.write(f"{indx}번 완료")
             indx += 1
 
-    #파일 압축하기
-    with zipfile.ZipFile("img.zip",'w') as my_zip:
-        for file in os.listdir(path):
-            if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png'):
-                my_zip.write(file)
+    # #파일 압축하기
+    # with zipfile.ZipFile("img.zip",'w') as my_zip:
+    #     for file in os.listdir(path):
+    #         if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png'):
+    #             my_zip.write(file)
 
-    with open('img.zip', 'rb') as f:
-        st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
+    # with open('img.zip', 'rb') as f:
+    #     st.download_button('이미지 압축 파일 다운로드 받기', f, file_name='img.zip')
     
-    st.success(f"작업이 완료되었습니다. 압축파일을 다운로드 받으세요.")
+    st.success(f"작업이 완료되었습니다. 이미지가 {path}에 저장되었습니다.")
