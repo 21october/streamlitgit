@@ -8,13 +8,13 @@ import os
 import zipfile
 # python3 -m streamlit run /Users/youkyung/21October/streamlitgit/celine.py
 
+st.title('CELINE')
+st.header('공식 홈페이지 이미지 다운로드')
+
 try:
     os.mkdir("C:\CELINE")
 except:
     pass
-
-st.title('CELINE')
-st.header('공식 홈페이지 이미지 다운로드')
 
 st.write("")
 st.write("")
