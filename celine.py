@@ -12,7 +12,7 @@ st.title('CELINE')
 st.header('공식 홈페이지 이미지 다운로드')
 
 try:
-    os.mkdir("C:\Users\CELINE")
+    os.mkdir("C:\\Users\\CELINE")
 except:
     pass
 
@@ -46,7 +46,7 @@ if uploaded_file is not None:
             n = 1
             for i in list:
                 with urlopen(i) as f:
-                    with open(path+"\"+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
+                    with open(path+"\\"+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
                         img = f.read()
                         h.write(img)
                 n += 1
