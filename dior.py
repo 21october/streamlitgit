@@ -9,7 +9,7 @@ import zipfile
 # python3 -m streamlit run /Users/youkyung/21October/streamlitgit/dior.py
 
 try:
-    os.mkdir("DIOR")
+    os.mkdir("C:/DIOR")
 except:
     pass
 
@@ -44,7 +44,7 @@ if uploaded_file is not None:
                     except:
                         pass
 
-            path = os.getcwd() + '/DIOR'
+            path = "C:/DIOR"
             
             n = 1
             for i in list:

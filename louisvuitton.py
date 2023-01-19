@@ -10,7 +10,7 @@ import zipfile
 from PIL import Image
 # python3 -m streamlit run /Users/youkyung/21October/streamlitgit/louisvuitton.py
 try:
-    os.mkdir("LV")
+    os.mkdir("C:/LV")
 except:
     pass
 
@@ -64,7 +64,7 @@ if uploaded_file is not None:
                     img456_2 = imgUrls2[2].strip()
                     list.append(img456_2)
 
-            path = os.getcwd() + '/LV'
+            path = "C:/LV"
             
             n = 1
             for i in list:
