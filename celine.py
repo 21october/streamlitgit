@@ -9,7 +9,7 @@ import zipfile
 # python3 -m streamlit run /Users/youkyung/21October/streamlitgit/celine.py
 
 try:
-    os.mkdir("C:/CELINE")
+    os.mkdir("C:\CELINE")
 except:
     pass
 
@@ -41,7 +41,7 @@ if uploaded_file is not None:
                 list.append(imgUrl)
         
             
-            path = "C:/CELINE"
+            path = "C:\CELINE"
             
             n = 1
             for i in list:
