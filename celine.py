@@ -26,7 +26,7 @@ if uploaded_file is not None:
     start_down = st.button(label="다운로드 시작하기")
     if start_down is not None:
         try:
-            os.mkdir("C:\\CELINE")
+            os.mkdir("/Users/youkyung/21October/streamlitgit/CELINE")
         except:
             pass
         indx = 1
@@ -42,12 +42,12 @@ if uploaded_file is not None:
                 list.append(imgUrl)
         
             
-            path = "C:\\CELINE"
+            path = "/Users/youkyung/21October/streamlitgit/CELINE"
             
             n = 1
             for i in list:
                 with urlopen(i) as f:
-                    with open(os.path.join("tempDir", str(indx)+"_"+name+str(n)+'.jpg'),'wb') as h:
+                    with open(path+'/'+str(indx)+"_"+name+str(n)+'.jpg','wb') as h:
                         img = f.read()
                         h.write(img)
                 n += 1
